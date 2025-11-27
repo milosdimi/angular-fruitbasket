@@ -16,8 +16,8 @@ export class FruitlistComponent {
     return 'empty';
   }
 
-  fontColorGood = 'green';
-  fontColorBad = 'red';
+  //fontColorGood = 'green';
+  //fontColorBad = 'red';
 
   fruitlist = [
     {
