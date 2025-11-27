@@ -9,12 +9,7 @@ body{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-*{
-    scrollbar-width: thin;
-    scrollbar-color: #FD5B4F #dddddd00;
-  }
-  
-  ::-webkit-scrollbar {
+::-webkit-scrollbar {
     width: 4px;
     height: 10px;
   }
