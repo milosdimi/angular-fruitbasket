@@ -9,6 +9,12 @@ import { Component } from '@angular/core';
   styleUrl: './fruitlist.component.scss',
 })
 export class FruitlistComponent {
+  getStarType(stars: number, starIndex: number): 'full' | 'half' | 'empty' {
+    if (stars >= starIndex) return 'full';
+    if (stars >= starIndex - 0.5) return 'half';
+    return 'empty';
+  }
+
   fruitlist = [
     {
       name: 'Apfel',
