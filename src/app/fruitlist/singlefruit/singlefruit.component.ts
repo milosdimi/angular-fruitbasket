@@ -1,14 +1,16 @@
 import { NgClass } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-singlefruit',
   standalone: true,
-  imports: [NgClass],
+  imports: [NgClass, FormsModule],
   templateUrl: './singlefruit.component.html',
   styleUrl: './singlefruit.component.scss',
 })
 export class SinglefruitComponent {
+
   getStarType(stars: number, starIndex: number): 'full' | 'half' | 'empty' {
     if (stars >= starIndex) return 'full';
     if (stars >= starIndex - 0.5) return 'half';
@@ -27,4 +29,15 @@ export class SinglefruitComponent {
       { name: 'Arne P.', text: 'nicht so meins' },
     ],
   };
+
+  inputData = '';
+
+  @Output() fruitClicked = new EventEmitter<string>();
+
+  sendInputData() {
+    //this.fruitClicked.emit(this.fruit.name);
+    //console.log(this.inputData);
+    this.inputData = 'Hallo Welt';
+  }
+
 }

@@ -1,53 +1,54 @@
-    <section class="singleFruitBox">
+<section class="singleFruitBox">
+    <div>
+        @if (fruit.stars < 3) { <img src="./assets/img/fruits/{{fruit.img}}" alt="" srcset="">
+            } @else {
+            <img class="fruitImage" src="./assets/img/fruits/{{fruit.img}}" alt="" srcset="">
+            }
+    </div>
+    <div>
+        <h2> {{fruit.name}} </h2>
         <div>
-            @if (fruit.stars < 3) { <img src="./assets/img/fruits/{{fruit.img}}" alt="" srcset="">
-                } @else {
-                <img class="fruitImage" src="./assets/img/fruits/{{fruit.img}}" alt="" srcset="">
+            <p><b>Bewertung:</b></p>
+            <div>
+                @for (count of [1,2,3,4,5]; track fruit) {
+                @switch (getStarType(fruit.stars, count)) {
+
+                @case ('full') {
+                <img src="./assets/img/stars/star.svg" alt="">
                 }
+
+                @case ('half') {
+                <img src="./assets/img/stars/star-half.svg" alt="">
+                }
+
+                @default {
+                <img src="./assets/img/stars/star-empty.svg" alt="">
+                }
+
+                }
+                }
+
+                <!--<p [ngStyle]="{color: item.stars > 3 ? fontColorGood : fontColorBad}" >({{ item.stars }})</p>-->
+
+
+                <p [ngClass]="{'fontColorBad' : fruit.stars < 3, 'fontColorGood' : fruit.stars >= 3 }">({{ fruit.stars
+                    }})</p>
+            </div>
         </div>
+
+        <div><b>Art:</b><br>{{fruit.genus}}</div>
+        <div><b>Beschreibung:</b><br>{{fruit.description}}</div>
         <div>
-            <h2> {{fruit.name}} </h2>
             <div>
-                <p><b>Bewertung:</b></p>
-                <div>
-                    @for (count of [1,2,3,4,5]; track fruit) {
-                    @switch (getStarType(fruit.stars, count)) {
-
-                    @case ('full') {
-                    <img src="./assets/img/stars/star.svg" alt="">
-                    }
-
-                    @case ('half') {
-                    <img src="./assets/img/stars/star-half.svg" alt="">
-                    }
-
-                    @default {
-                    <img src="./assets/img/stars/star-empty.svg" alt="">
-                    }
-
-                    }
-                    }
-                    
-                    <!--<p [ngStyle]="{color: item.stars > 3 ? fontColorGood : fontColorBad}" >({{ item.stars }})</p>-->
-
-
-                    <p [ngClass]="{'fontColorBad' : fruit.stars < 3, 'fontColorGood' : fruit.stars >= 3 }" >({{ fruit.stars }})</p>
-                </div>
+                @for (review of fruit.reviews; track review) {
+                <div><b>{{review.name}}:</b><br>{{review.text}}</div>
+                } @empty {
+                no reviews yet
+                }
             </div>
-
-            <div><b>Art:</b><br>{{fruit.genus}}</div>
-            <div><b>Beschreibung:</b><br>{{fruit.description}}</div>
-            <div>
-                <div>
-                    @for (review of fruit.reviews; track review) {
-                    <div><b>{{review.name}}:</b><br>{{review.text}}</div>
-                    } @empty {
-                    no reviews yet
-                    }
-                </div>
-                <div><input type="text" placeholder="Enter review"><button title="Submit review"><img
-                            src="./assets/img/arrow-35-32.png" alt="" srcset=""></button>
-                </div>
+            <div><input [(ngModel)]="inputData" type="text" placeholder="Enter review"><button title="Submit review"><img
+                        (click)="sendInputData()" src="./assets/img/arrow-35-32.png" alt="" srcset=""></button>
             </div>
         </div>
-    </section>
+    </div>
+</section>
