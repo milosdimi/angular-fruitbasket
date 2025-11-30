@@ -11,11 +11,6 @@ import { SinglefruitComponent } from './singlefruit/singlefruit.component';
 })
 export class FruitlistComponent {
 
-  getStarType(stars: number, starIndex: number): 'full' | 'half' | 'empty' {
-    if (stars >= starIndex) return 'full';
-    if (stars >= starIndex - 0.5) return 'half';
-    return 'empty';
-  }
 
   //fontColorGood = 'green';
   //fontColorBad = 'red';
