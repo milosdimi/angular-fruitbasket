@@ -10,7 +10,6 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './singlefruit.component.scss',
 })
 export class SinglefruitComponent {
-
   getStarType(stars: number, starIndex: number): 'full' | 'half' | 'empty' {
     if (stars >= starIndex) return 'full';
     if (stars >= starIndex - 0.5) return 'half';
@@ -35,9 +34,7 @@ export class SinglefruitComponent {
   @Output() fruitClicked = new EventEmitter<string>();
 
   sendInputData() {
-    //this.fruitClicked.emit(this.fruit.name);
-    //console.log(this.inputData);
-    this.inputData = 'Hallo Welt';
+    this.fruitClicked.emit(this.inputData);
+    this.inputData = '';
   }
-
 }
